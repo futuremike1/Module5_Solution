@@ -152,12 +152,12 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
 
     // Load the menu items view
     // 'categoryShort' is a short_name for a category
-    dc.loadMenuItems = function(categoryShort) {
-        showLoading("#main-content");
-        $ajaxUtils.sendGetRequest(
-            menuItemsUrl + categoryShort,
-            buildAndShowMenuItemsHTML);
-    };
+    dc.loadMenuItems = function (categoryShort) {
+      showLoading("#main-content");
+      $ajaxUtils.sendGetRequest(
+        menuItemsUrl + categoryShort + ".json",
+        buildAndShowMenuItemsHTML);
+};
 
 
     // Builds HTML for the categories page based on the data
@@ -176,8 +176,8 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
 
                         var categoriesViewHtml =
                             buildCategoriesViewHtml(categories,
-                                categoriesTitleHtml,
-                                categoryHtml);
+                                                    categoriesTitleHtml,
+                                                    categoryHtml);
                         insertHtml("#main-content", categoriesViewHtml);
                     },
                     false);
@@ -189,8 +189,8 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
     // Using categories data and snippets html
     // build categories view HTML to be inserted into page
     function buildCategoriesViewHtml(categories,
-        categoriesTitleHtml,
-        categoryHtml) {
+                                     categoriesTitleHtml,
+                                     categoryHtml) {
 
         var finalHtml = categoriesTitleHtml;
         finalHtml += "<section class='row'>";
@@ -205,8 +205,8 @@ $(function() { // Same as document.addEventListener("DOMContentLoaded"...
                 insertProperty(html, "name", name);
             html =
                 insertProperty(html,
-                    "short_name",
-                    short_name);
+                               "short_name",
+                                short_name);
             finalHtml += html;
         }
 
